@@ -1,0 +1,32 @@
+service: vrchan
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: python3.12
+  region: ap-northeast-1
+  environment:
+    VRC_USERNAME: ${env:VRC_USERNAME}
+    VRC_PASSWORD: ${env:VRC_PASSWORD}
+    VRC_USER_AGENT: ${env:VRC_USER_AGENT}
+    VRC_GROUP_ID: ${env:VRC_GROUP_ID}
+    UPSTASH_REDIS_REST_URL: ${env:UPSTASH_REDIS_REST_URL}
+    UPSTASH_REDIS_REST_TOKEN: ${env:UPSTASH_REDIS_REST_TOKEN}    
+    OTP_SECRET: ${env:OTP_SECRET}
+    DISCORD_WEBHOOK_URL: ${env:DISCORD_WEBHOOK_URL}
+    THUMBNAIL_URL: ${env:THUMBNAIL_URL}
+
+functions:
+  vrchan-group-instances:
+    handler: vrchan.app.lambda_handler_group_instances
+    events:
+      - schedule: cron(0/15 * * * ? *) # every 15 minutes
+  vrchan-hot-worlds:
+    handler: vrchan.app.lambda_handler_hot_worlds
+    events:
+      - schedule: cron(0 12 * * ? *) # 21:00 JST
+
+plugins:
+  - serverless-python-requirements
+
