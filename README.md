@@ -8,10 +8,12 @@ VRChan は VRChat のグループインスタンスの状況を監視し、Disco
 
 事前に下記が必要です。
 
-- Discord の Webhook URL を取得
-- VRChat の TOTP シークレットを取得
-- VRChat のグループ ID を取得
-- Upstash の Redis の URL と API トークンを取得
+- [uv](https://docs.astral.sh/uv/) をインストール & Python 3.12 をインストール
+- [Serverless Framework](https://www.serverless.com/framework/docs/getting-started) のインストールと初期設定
+- [Discord](https://discord.com/) の Webhook URL を取得
+- [VRChat](https://vrchat.com/) の TOTP シークレットを取得
+- [VRChat](https://vrchat.com/) のグループ ID を取得
+- [Upstash](https://upstash.com/) の Redis の URL と API トークンを取得
 
 ### 実行/デプロイ
 
