@@ -1,7 +1,8 @@
-import httpx
 import base64
+from typing import Any, Literal
+
+import httpx
 import pyotp
-from typing import Literal, Any
 
 
 class VRChatAPI:
